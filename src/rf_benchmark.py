@@ -20,9 +20,9 @@ def create_rf_benchmark():
     
     ###############################################################################
     # Set the parameters by cross-validation
-    tuned_parameters = [{'n_estimators':[200, 300, 500, 1000], 'min_samples_split':[1, 2, 3, 4, 5], 'oob_score':[False, True],
-                        'max_depth':[2, 3, 4],
-                        'min_samples_leaf':[1, 5, 10]}]
+    tuned_parameters = [{'n_estimators':[500, 1000], 'min_samples_split':[1, 5, 10, 20], 'oob_score':[False, True],
+                        'max_depth':[ 4],
+                        'min_samples_leaf':[5, 10]}]
     
     # Create a classifier: a support vector classifier
     # classifier = svm.SVC(C=2.82, cache_size=2000, coef0=0.0, gamma=0.0078, kernel='rbf',
@@ -67,7 +67,7 @@ def create_rf_benchmark():
     # predicted = classifier.predict(train[n_samples / 10:])
     
     preds = clf.predict(test)
-    np.savetxt('Data/rf_benchmark_cv5_sub3.csv', preds, delimiter=',', fmt='%d')
+    np.savetxt('Data/rf_benchmark_cv5_sub4.csv', preds, delimiter=',', fmt='%d')
     
     # print "Classification report for classifier %s:\n%s\n" % (classifier, metrics.classification_report(expected, predicted))
     # print "Confusion matrix:\n%s" % metrics.confusion_matrix(expected, predicted)
